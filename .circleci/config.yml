@@ -9,7 +9,7 @@ jobs:
       - image: cimg/base:stable
     description: "Command to print out the pipeline id"
     steps:
-      - print_pipeline_id:
+      - print_pipeline_id
 workflows:
   print-the-CI-id:
     jobs:
