@@ -1,16 +1,16 @@
 version: 2.1
 commands:
   print_pipeline_id:
-    description: "Command which prints out the pipeline id"
     steps:
       - run: echo ${CIRCLE_WORKFLOW_ID}
 jobs:
-  print-workflow-id:
+  print-CI-id:
     docker:
       - image: cimg/base:stable
+    description: "Command to print out the pipeline id"
     steps:
       - print_pipeline_id:
 workflows:
-  print-the-workflow-id:
+  print-the-CI-id:
     jobs:
-      - print-workflow-id
+      - print-CI-id
