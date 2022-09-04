@@ -2,22 +2,14 @@ version: 2.1
 commands:
   print_pipeline_id:
     description: "Command which prints out the pipeline id"
-    parameters:
-      to:
-        type: string
-        default: "Hello"
-      steps:
-        - run: echo << parameters.to >>
+    steps:
+      - run: echo ${CIRCLE_WORKFLOW_ID}
 jobs:
   print-workflow-id:
     docker:
       - image: cimg/base:stable
     steps:
-      - run:
-          name: "Print Workflow ID"
-          steps:
-            - print_pipeline_id:
-                to: $CIRCLE_WORKFLOW_ID
+      - print_pipeline_id:
 workflows:
   print-the-workflow-id:
     jobs:
