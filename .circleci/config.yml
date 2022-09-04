@@ -5,7 +5,7 @@ commands:
     parameters:
       to:
         type: string
-        default: $CIRCLE_WORKFLOW_ID
+        default: "Hello"
       steps:
         - run: echo << parameters.to >>
 jobs:
@@ -13,11 +13,11 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - checkout
       - run:
           name: "Print Workflow ID"
           steps:
-            - print_pipeline_id
+            - print_pipeline_id:
+                to: $CIRCLE_WORKFLOW_ID
 workflows:
   print-the-workflow-id:
     jobs:
